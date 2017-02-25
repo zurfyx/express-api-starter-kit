@@ -19,7 +19,13 @@
       "command": "echo \"\\033[1;31mProduction run's not defined yet. Use npm run start-dev\\033[0m\""
     },
     "start-dev": {
-      "command": "nodemon src/server.js --exec babel-node"
+      "command": "nodemon src/server.js --exec babel-node",
+      "env": {
+        "NODE_ENV": "development",
+        "PORT": 3030,
+        "DEBUG": "*info,*dev,*error",
+        "DEBUG_COLORS": true
+      }
     }
   },
   "repository": {
