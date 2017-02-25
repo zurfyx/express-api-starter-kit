@@ -1,30 +1,82 @@
 {
-  "name": "Base",
+  "name": "express-api-starter-kit",
+  "description": "Express API starter kit",
+  "author": {
+    "name": "Gerard Rovira Sánchez",
+    "email": "zurfyx@gmail.com",
+    "url": "zurfyx.com"
+  },
   "version": "1.0.0",
-  "description": "Basic structure for Express web apps.",
-  "main": "app.js",
+  "main": "src/server.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "node_modules/.bin/mocha tests/**"
+    "start": "npm run start-prod",
+    "start-dev": "better-npm-run start-dev",
+    "start-prod": "better-npm-run start-prod",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "betterScripts": {
+    "start-prod": {
+      "command": "echo \"\\033[1;31mProduction run's not defined yet. Use npm run start-dev\\033[0m\""
+    },
+    "start-dev": {
+      "command": "nodemon src/server.js --exec babel-node"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zurfyx/express-api-starter-kit.git"
   },
   "keywords": [
-    "base",
-    "project",
     "node",
     "express",
-    "structure"
+    "api",
+    "starter",
+    "kit",
+    "json"
   ],
-  "author": "Terlici Ltd.",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zurfyx/express-api-starter-kit/issues"
+  },
+  "homepage": "https://github.com/zurfyx/express-api-starter-kit#readme",
   "dependencies": {
-    "body-parser": "^1.12.3",
-    "express": "^4.12.3",
-    "jade": "^1.9.2",
-    "mongodb": "~2.0.33",
-    "monk": "~1.0.1"
+    "bcrypt": "^1.0.2",
+    "better-npm-run": "0.0.14",
+    "body-parser": "^1.16.1",
+    "config": "^1.25.1",
+    "connect-redis": "^3.2.0",
+    "cookie-parser": "^1.4.3",
+    "crypto": "0.0.3",
+    "debug": "^2.6.1",
+    "express": "^4.14.1",
+    "express-session": "^1.15.1",
+    "http": "0.0.0",
+    "mongoose": "^4.8.4",
+    "morgan": "^1.8.1",
+    "redis": "^2.6.5"
   },
   "devDependencies": {
-    "mocha": "^2.2.4",
-    "should": "^6.0.1"
+    "babel-cli": "^6.23.0",
+    "babel-core": "^6.23.1",
+    "babel-plugin-root-import": "^4.1.8",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-es2016": "^6.22.0",
+    "babel-preset-es2017": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "chai": "^3.5.0",
+    "eslint": "^3.16.1",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-import-resolver-babel-root-import": "0.0.2",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "mockery": "^2.0.0",
+    "mockgoose": "^6.0.8",
+    "nodemon": "^1.11.0",
+    "sinon": "^1.17.7",
+    "superagent": "^3.5.0"
   }
 }
