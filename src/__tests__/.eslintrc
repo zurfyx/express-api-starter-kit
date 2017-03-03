@@ -3,6 +3,7 @@
     "mocha": true
   },
   "globals": {
-    "fetchApi": true
+    "fetchApi": true,
+    "headers": true
   }
 }

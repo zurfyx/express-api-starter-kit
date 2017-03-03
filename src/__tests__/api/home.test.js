@@ -22,7 +22,6 @@ describe('Home', () => {
 
   describe('POST /', () => {
     it('should greet on POST', async () => {
-      const headers = { 'Content-Type': 'application/json' };
       const form = JSON.stringify({ name: '🍭' });
       const response = await fetchApi('/', { headers, method: 'POST', body: form });
       const json = await response.json();

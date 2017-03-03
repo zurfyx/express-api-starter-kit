@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import Session from 'express-session';
 import morgan from 'morgan';
 import config from 'config';
+import passport from 'passport';
 
 import { info, error } from './helpers/log';
 import initializeMongodb from './databases/mongodb';
@@ -44,6 +45,10 @@ app.use((req, res, next) => {
   }
   next();
 });
+
+// Passport.
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Logging (debug only).
 app.use(morgan('combined', { stream: { write: msg => info(msg) } }));

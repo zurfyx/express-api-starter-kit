@@ -3,6 +3,7 @@ import express from 'express';
 import * as log from '~/helpers/log';
 import { ServerError } from '~/helpers/server';
 
+import * as auth from '~/controllers/auth';
 import * as home from '~/controllers/home';
 
 const router = express.Router();
@@ -24,6 +25,12 @@ const controllerHandler = (promise, params) => async (req, res, next) => {
   }
 };
 const c = controllerHandler;
+
+/**
+ * Auth.
+ */
+router.post('/signin', c(auth.signin, (req, res, next) => [req, res, next]));
+router.post('/signup', c(auth.signup, (req, res, next) => [req, res, next]));
 
 /**
  * Home.
