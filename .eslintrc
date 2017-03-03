@@ -6,7 +6,8 @@
   },
   "settings": {
     "import/resolver": {
-      "babel-root-import": {}
+      "babel-root-import": {}, // Temp. Awaiting PR to be accepted. https://github.com/olalonde/eslint-import-resolver-babel-root-import/pull/6
+      "babel-plugin-root-import": {}
     }
   }
 }

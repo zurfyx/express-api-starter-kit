@@ -12,7 +12,9 @@
     "start": "npm run start-prod",
     "start-dev": "better-npm-run start-dev",
     "start-prod": "better-npm-run start-prod",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint .",
+    "test": "npm run lint && better-npm-run test",
+    "coverage": "npm run lint && better-npm-run coverage"
   },
   "betterScripts": {
     "start-prod": {
@@ -25,6 +27,22 @@
         "PORT": 3030,
         "DEBUG": "*info,*dev,*error",
         "DEBUG_COLORS": true
+      }
+    },
+    "test": {
+      "command": "mocha --compilers js:babel-core/register --require babel-polyfill ./src/__tests__/helper.js \"./src/**/*.test.js\" --timeout 15000",
+      "env": {
+        "NODE_ENV": "test",
+        "PORT": 3030,
+        "DEBUG": "*info,*dev,*error"
+      }
+    },
+    "coverage": {
+      "command": "istanbul --include-all-sources cover _mocha -- --compilers js:babel-core/register --require babel-polyfill ./src/__tests__/helper.js \"./src/**/*.test.js\" --timeout 15000",
+      "env": {
+        "NODE_ENV": "test",
+        "PORT": 3030,
+        "DEBUG": "*error"
       }
     }
   },
@@ -63,9 +81,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
-    "babel-core": "^6.23.1",
-    "babel-plugin-root-import": "^4.1.8",
-    "babel-polyfill": "^6.23.0",
+    "babel-plugin-root-import": "^5.0.0",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-es2016": "^6.22.0",
     "babel-preset-es2017": "^6.22.0",
@@ -77,12 +93,14 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.0",
+    "fetch-absolute": "^1.0.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
     "mockery": "^2.0.0",
     "mockgoose": "^6.0.8",
+    "mongoose": "^4.8.5",
+    "node-fetch": "^1.6.3",
     "nodemon": "^1.11.0",
-    "sinon": "^1.17.7",
-    "superagent": "^3.5.0"
+    "sinon": "^1.17.7"
   }
 }
