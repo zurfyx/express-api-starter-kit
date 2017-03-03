@@ -13,7 +13,8 @@
     "start-dev": "better-npm-run start-dev",
     "start-prod": "better-npm-run start-prod",
     "lint": "eslint .",
-    "test": "npm run lint && better-npm-run test",
+    "test": "npm run lint && better-npm-run test-cli",
+    "test-cli": "better-npm-run test-cli",
     "coverage": "npm run lint && better-npm-run coverage"
   },
   "betterScripts": {
@@ -29,7 +30,7 @@
         "DEBUG_COLORS": true
       }
     },
-    "test": {
+    "test-cli": {
       "command": "mocha --compilers js:babel-core/register --require babel-polyfill ./src/__tests__/helper.js \"./src/**/*.test.js\" --timeout 15000",
       "env": {
         "NODE_ENV": "test",

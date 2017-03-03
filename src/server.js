@@ -9,6 +9,7 @@ import config from 'config';
 import { info, error } from './helpers/log';
 import initializeMongodb from './databases/mongodb';
 import initializeRedis from './databases/redis';
+import routes from './routes';
 
 const PORT = process.env.PORT || 3030;
 
@@ -48,7 +49,7 @@ app.use((req, res, next) => {
 app.use(morgan('combined', { stream: { write: msg => info(msg) } }));
 
 // URLs.
-app.get('/', (req, res, _next) => res.json({ msg: 'It works!' }));
+app.use('/', routes);
 
 server.listen(PORT);
 info('-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-');
