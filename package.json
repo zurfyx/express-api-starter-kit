@@ -78,7 +78,8 @@
     "http": "0.0.0",
     "mongoose": "^4.8.4",
     "morgan": "^1.8.1",
-    "redis": "^2.6.5"
+    "redis": "^2.6.5",
+    "validator": "^7.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
