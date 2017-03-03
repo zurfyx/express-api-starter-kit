@@ -15,7 +15,7 @@
     "lint": "eslint .",
     "test": "npm run lint && better-npm-run test-cli",
     "test-cli": "better-npm-run test-cli",
-    "coverage": "npm run lint && better-npm-run coverage"
+    "coverage": "better-npm-run coverage"
   },
   "betterScripts": {
     "start-prod": {
@@ -95,7 +95,7 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.0",
     "fetch-absolute": "^1.0.0",
-    "istanbul": "^0.4.5",
+    "istanbul": "^1.1.0-alpha.1",
     "mocha": "^3.2.0",
     "mockery": "^2.0.0",
     "mockgoose": "^6.0.8",

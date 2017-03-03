@@ -22,6 +22,7 @@ install:
   - npm install -g codecov
 
 script:
+  - npm run lint
   - npm run coverage
 
 after_success:
