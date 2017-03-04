@@ -3,8 +3,8 @@
 > A starter kit for building an API with Node.
 
 [![Build Status](https://travis-ci.org/zurfyx/express-api-starter-kit.svg?branch=master)](https://travis-ci.org/zurfyx/express-api-starter-kit)
-[![David](https://david-dm.org/zurfyx/express-api-starter-kit.svg)](https://github.com/zurfyx/express-api-starter-kit)
-[![David](https://david-dm.org/zurfyx/express-api-starter-kit/dev-status.svg)](https://github.com/zurfyx/express-api-starter-kit#info=devDependencies)
+[![David](https://david-dm.org/zurfyx/express-api-starter-kit.svg)](https://david-dm.org/zurfyx/express-api-starter-kit)
+[![David](https://david-dm.org/zurfyx/express-api-starter-kit/dev-status.svg)](https://david-dm.org/zurfyx/express-api-starter-kit#info=devDependencies)
 [![codecov](https://codecov.io/gh/zurfyx/express-api-starter-kit/branch/master/graph/badge.svg)](https://codecov.io/gh/zurfyx/express-api-starter-kit)
 [![Code Climate](https://codeclimate.com/github/zurfyx/express-api-starter-kit/badges/gpa.svg)](https://codeclimate.com/github/zurfyx/express-api-starter-kit)
 

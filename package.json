@@ -31,7 +31,7 @@
       }
     },
     "test-cli": {
-      "command": "mocha --compilers js:babel-core/register --require babel-polyfill ./src/__tests__/helper.js \"./src/**/*.test.js\" --timeout 15000",
+      "command": "mocha --compilers js:babel-core/register --require babel-polyfill ./src/__tests__/helper.js \"./src/**/*.test.js\" --timeout 120000",
       "env": {
         "NODE_ENV": "test",
         "PORT": 3030,
@@ -39,7 +39,7 @@
       }
     },
     "coverage": {
-      "command": "istanbul --include-all-sources cover _mocha -- --compilers js:babel-core/register --require babel-polyfill ./src/__tests__/helper.js \"./src/**/*.test.js\" --timeout 15000",
+      "command": "istanbul --include-all-sources cover _mocha -- --compilers js:babel-core/register --require babel-polyfill ./src/__tests__/helper.js \"./src/**/*.test.js\" --timeout 120000",
       "env": {
         "NODE_ENV": "test",
         "PORT": 3030,
@@ -101,7 +101,7 @@
     "istanbul": "^1.1.0-alpha.1",
     "mocha": "^3.2.0",
     "mockery": "^2.0.0",
-    "mockgoose": "^6.0.8",
+    "mockgoose": "^7.0.0",
     "mongoose": "^4.8.5",
     "node-fetch": "^1.6.3",
     "nodemon": "^1.11.0",
