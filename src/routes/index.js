@@ -36,8 +36,8 @@ router.post('/signup', c(auth.signup, (req, res, next) => [req, res, next]));
  * Home.
  */
 router.get('/', c(home.hello));
-router.get('/:name', c(home.getGreeting, req => [req.params.name]));
-router.post('/', c(home.postGreeting, req => [req.body.name]));
+router.get('/greet/:name', c(home.getGreeting, req => [req.params.name]));
+router.post('/greet/', c(home.postGreeting, req => [req.body.name]));
 
 /**
  * Error-handler.
