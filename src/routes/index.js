@@ -5,6 +5,7 @@ import { ServerError } from '~/helpers/server';
 
 import * as auth from '~/controllers/auth';
 import * as home from '~/controllers/home';
+import * as publication from '~/controllers/publication';
 
 const router = express.Router();
 
@@ -38,6 +39,12 @@ router.post('/signup', c(auth.signup, (req, res, next) => [req, res, next]));
 router.get('/', c(home.hello));
 router.get('/greet/:name', c(home.getGreeting, req => [req.params.name]));
 router.post('/greet/', c(home.postGreeting, req => [req.body.name]));
+
+/**
+ * Publications.
+ */
+router.get('/publications', c(publication.getPublications));
+router.post('/publications', c(publication.postPublication, req => [req.user, req.body.content]));
 
 /**
  * Error-handler.

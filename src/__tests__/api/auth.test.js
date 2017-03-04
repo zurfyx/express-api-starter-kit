@@ -1,5 +1,3 @@
-/* eslint-disable import/prefer-default-export */
-
 import { expect } from 'chai';
 
 import User from '~/models/User';
@@ -13,6 +11,22 @@ export function createLollipopUser() {
   const email = 'lollipop@example.com';
   const password = '🍭'.repeat(4);
   return new User({ email, password }).save();
+}
+
+export async function signinWithLollipop() {
+  const user = await createLollipopUser();
+  const body = JSON.stringify({ email: 'lollipop@example.com', password: '🍭'.repeat(4) });
+  const response = await fetchApi('/signin', { headers, body, method: 'POST' });
+  const jsonResponse = await response.json();
+  const cookie = response.headers.get('set-cookie');
+  const newHeaders = Object.assign({ cookie }, headers);
+  return {
+    user,
+    response,
+    jsonResponse,
+    cookie,
+    headers: newHeaders,
+  };
 }
 
 describe('Auth', () => {
