@@ -5,6 +5,7 @@ const fetchAbsolute = require('fetch-absolute');
 
 const PORT = process.env.PORT || 3030;
 
+mongoose.Promise = Promise;
 const mockgoose = new Mockgoose(mongoose);
 
 // Globals.
