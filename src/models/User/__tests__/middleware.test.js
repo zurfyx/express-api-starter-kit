@@ -9,7 +9,7 @@ const { hashPassword } = require('../middleware');
 describe('Model: User (middleware)', () => {
   it('should return a hashed password on password modification', (done) => {
     const user = new User({ password: '🍭' });
-    sinon.stub(user, 'isModified', () => true);
+    sinon.stub(user, 'isModified').callsFake(() => true);
     hashPassword.call(user, () => {
       expect(user.password).to.be.a('string');
       expect(user.password).not.to.equal('🍭');
@@ -19,7 +19,7 @@ describe('Model: User (middleware)', () => {
 
   it('should not return a hashed password when password was not modified', (done) => {
     const user = new User({ password: '🍭' });
-    sinon.stub(user, 'isModified', () => false);
+    sinon.stub(user, 'isModified').callsFake(() => false);
     hashPassword.call(user, () => {
       expect(user.password).to.equal('🍭');
       done();
