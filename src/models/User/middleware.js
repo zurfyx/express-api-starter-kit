@@ -1,13 +1,11 @@
-/* eslint-disable import/prefer-default-export */
-
-import bcrypt from 'bcrypt';
+const bcrypt = require('bcrypt');
 
 /**
  * Hashes password using bcrypt.
  * Middleware type: pre-save.
  * @param next
  */
-export function hashPassword(next) {
+function hashPassword(next) {
   const user = this;
   if (!user.isModified('password')) {
     return next();
@@ -21,3 +19,7 @@ export function hashPassword(next) {
     });
   });
 }
+
+module.exports = {
+  hashPassword,
+};

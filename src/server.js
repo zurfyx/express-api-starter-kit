@@ -1,16 +1,15 @@
-import http from 'http';
-import express from 'express';
-import bodyParser from 'body-parser';
-import cookieParser from 'cookie-parser';
-import Session from 'express-session';
-import morgan from 'morgan';
-import config from 'config';
-import passport from 'passport';
+const http = require('http');
+const express = require('express');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const Session = require('express-session');
+const morgan = require('morgan');
+const config = require('config');
+const passport = require('passport');
 
-import { info, error } from './helpers/log';
-import initializeMongodb from './databases/mongodb';
-import initializeRedis from './databases/redis';
-import routes from './routes';
+const log = require('./helpers/log');
+const databases = require('./databases');
+const routes = require('./routes');
 
 const PORT = process.env.PORT || 3030;
 
@@ -20,8 +19,8 @@ const server = http.createServer(app);
 // Hey you! care about my order http://stackoverflow.com/a/16781554/2034015
 
 // Databases.
-initializeMongodb();
-const dbSession = initializeRedis(Session);
+databases.mongodb();
+const dbSession = databases.redis(Session);
 
 // Cookies.
 app.use(cookieParser());
@@ -41,7 +40,7 @@ const session = Session({
 app.use(session);
 app.use((req, res, next) => {
   if (!req.session) {
-    error('Session not found (is Redis down?).');
+    log.error('Session not found (is Redis down?).');
   }
   next();
 });
@@ -51,14 +50,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Logging (debug only).
-app.use(morgan('combined', { stream: { write: msg => info(msg) } }));
+app.use(morgan('combined', { stream: { write: msg => log.info(msg) } }));
 
 // URLs.
 app.use('/', routes);
 
 server.listen(PORT);
-info('-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-');
-info(`🌐  API listening on port ${PORT}`);
-info('-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-');
+log.info('-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-');
+log.info(`🌐  API listening on port ${PORT}`);
+log.info('-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-·-');
 
-export default server;
+module.exports = server;

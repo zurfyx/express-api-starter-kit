@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-expressions */
 
-import { expect } from 'chai';
+const { expect } = require('chai');
 
-import User from '../';
+const User = require('../');
 
 describe('Model: User (methods)', () => {
   it('hashed password should match when compared with the original password', async () => {

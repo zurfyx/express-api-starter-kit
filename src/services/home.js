@@ -1,10 +1,12 @@
-/* eslint-disable import/prefer-default-export */
+const { ServerError } = require('../helpers/server');
 
-import { ServerError } from '~/helpers/server';
-
-export function processGreeting(name) {
+function processGreeting(name) {
   if (!name) {
     throw new ServerError('Name can\'t be undefined', 400);
   }
   return `Hello ${name}!`;
 }
+
+module.exports = {
+  processGreeting,
+};

@@ -1,9 +1,11 @@
-import mongoose, { Schema } from 'mongoose';
-import isEmail from 'validator/lib/isEmail';
+const mongoose = require('mongoose');
+const isEmail = require('validator/lib/isEmail');
 
-import { isPassword } from './validate';
-import { hashPassword } from './middleware';
-import { comparePassword } from './methods';
+const { isPassword } = require('./validate');
+const { hashPassword } = require('./middleware');
+const { comparePassword } = require('./methods');
+
+const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
   email: {
@@ -29,6 +31,4 @@ userSchema.pre('save', hashPassword);
  */
 userSchema.methods.comparePassword = comparePassword;
 
-const User = mongoose.model('User', userSchema);
-
-export default User;
+module.exports = mongoose.model('User', userSchema);

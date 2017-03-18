@@ -10,8 +10,8 @@
   "main": "src/server.js",
   "scripts": {
     "start": "npm run start-prod",
-    "start-dev": "better-npm-run start-dev",
     "start-prod": "better-npm-run start-prod",
+    "start-dev": "better-npm-run start-dev",
     "lint": "eslint .",
     "test": "npm run lint && better-npm-run test-cli",
     "test-cli": "better-npm-run test-cli",
@@ -19,10 +19,15 @@
   },
   "betterScripts": {
     "start-prod": {
-      "command": "echo \"\\033[1;31mProduction run's not defined yet. Use npm run start-dev\\033[0m\""
+      "command": "node src/server.js",
+      "env": {
+        "NODE_ENV": "production",
+        "PORT": 3030,
+        "DEBUG": "*info,*error"
+      }
     },
     "start-dev": {
-      "command": "nodemon src/server.js --exec babel-node",
+      "command": "nodemon src/server.js",
       "env": {
         "NODE_ENV": "development",
         "PORT": 3030,
@@ -31,7 +36,7 @@
       }
     },
     "test-cli": {
-      "command": "mocha --compilers js:babel-core/register --require babel-polyfill ./src/__tests__/helper.js \"./src/**/*.test.js\" --timeout 120000",
+      "command": "mocha ./src/__tests__/helper.js \"./src/**/*.test.js\" --timeout 120000",
       "env": {
         "NODE_ENV": "test",
         "PORT": 3030,
@@ -39,7 +44,7 @@
       }
     },
     "coverage": {
-      "command": "istanbul --include-all-sources cover _mocha -- --compilers js:babel-core/register --require babel-polyfill ./src/__tests__/helper.js \"./src/**/*.test.js\" --timeout 120000",
+      "command": "istanbul --include-all-sources cover _mocha -- ./src/__tests__/helper.js \"./src/**/*.test.js\" --timeout 120000",
       "env": {
         "NODE_ENV": "test",
         "PORT": 3030,
@@ -84,16 +89,9 @@
     "validator": "^7.0.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.23.0",
-    "babel-plugin-root-import": "^5.0.0",
-    "babel-preset-es2015": "^6.22.0",
-    "babel-preset-es2016": "^6.22.0",
-    "babel-preset-es2017": "^6.22.0",
-    "babel-preset-stage-0": "^6.22.0",
     "chai": "^3.5.0",
     "eslint": "^3.16.1",
     "eslint-config-airbnb": "^14.1.0",
-    "eslint-import-resolver-babel-root-import": "0.0.2",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.0",

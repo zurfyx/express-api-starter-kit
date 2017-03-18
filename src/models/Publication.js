@@ -1,4 +1,6 @@
-import mongoose, { Schema } from 'mongoose';
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
 
 const publicationSchema = new Schema({
   user: {
@@ -13,6 +15,4 @@ const publicationSchema = new Schema({
   },
 }, { timestamps: true });
 
-const Publication = mongoose.model('Publication', publicationSchema);
-
-export default Publication;
+module.exports = mongoose.model('Publication', publicationSchema);

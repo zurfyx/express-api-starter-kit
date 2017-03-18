@@ -1,11 +1,11 @@
-import { ServerError } from '~/helpers/server';
-import Publication from '~/models/Publication';
+const { ServerError } = require('../helpers/server');
+const Publication = require('../models/Publication');
 
-export function findPublications(filter = {}) {
+function findPublications(filter = {}) {
   return Publication.find(filter).exec();
 }
 
-export async function createPublication(user, content) {
+async function createPublication(user, content) {
   const newPublication = new Publication();
   newPublication.user = user;
   newPublication.content = content;
@@ -17,3 +17,8 @@ export async function createPublication(user, content) {
     throw new ServerError(validateError.message, 400);
   }
 }
+
+module.exports = {
+  findPublications,
+  createPublication,
+};

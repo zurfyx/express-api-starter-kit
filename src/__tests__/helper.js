@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
-import { Mockgoose } from 'mockgoose';
-import fetch from 'node-fetch';
-import fetchAbsolute from 'fetch-absolute';
+const mongoose = require('mongoose');
+const { Mockgoose } = require('mockgoose');
+const fetch = require('node-fetch');
+const fetchAbsolute = require('fetch-absolute');
 
 const PORT = process.env.PORT || 3030;
 
@@ -14,7 +14,7 @@ global.headers = { 'Content-Type': 'application/json' };
 // Setup.
 before(async () => {
   await mockgoose.prepareStorage();
-  require('~/server'); // eslint-disable-line global-require
+  require('../server'); // eslint-disable-line global-require
 });
 
 afterEach(async () => mockgoose.helper.reset());

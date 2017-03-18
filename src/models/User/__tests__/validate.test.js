@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-expressions */
 
-import { expect } from 'chai';
+const { expect } = require('chai');
 
-import { isPassword } from '../validate';
+const { isPassword } = require('../validate');
 
 describe('Model: User (validate)', () => {
   it('should be valid is password is equal or longer than 4 characters', () => {

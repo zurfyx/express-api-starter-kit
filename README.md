@@ -10,9 +10,9 @@
 
 ## Requirements
 
-- [MongoDB](https://www.mongodb.com/)
-- [Redis](https://redis.io/)
-- [Node](https://nodejs.org)
+- [MongoDB](https://www.mongodb.com/download-center)
+- [Redis](https://redis.io/download)
+- [Node v7.6+](https://nodejs.org/en/download/package-manager/)
 
 Node dependencies:
 

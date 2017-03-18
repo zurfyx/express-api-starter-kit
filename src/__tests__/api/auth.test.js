@@ -1,19 +1,19 @@
-import { expect } from 'chai';
+const { expect } = require('chai');
 
-import User from '~/models/User';
+const { User } = require('../../models');
 
 /**
  * Creates an user.
  * Username: lollipop@example.com
  * Password: 🍭🍭🍭🍭
  */
-export function createLollipopUser() {
+function createLollipopUser() {
   const email = 'lollipop@example.com';
   const password = '🍭'.repeat(4);
   return new User({ email, password }).save();
 }
 
-export async function signinWithLollipop() {
+async function signinWithLollipop() {
   const user = await createLollipopUser();
   const body = JSON.stringify({ email: 'lollipop@example.com', password: '🍭'.repeat(4) });
   const response = await fetchApi('/signin', { headers, body, method: 'POST' });
@@ -70,3 +70,8 @@ describe('Auth', () => {
     });
   });
 });
+
+module.exports = {
+  createLollipopUser,
+  signinWithLollipop,
+};

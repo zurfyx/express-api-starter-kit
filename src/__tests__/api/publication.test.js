@@ -1,7 +1,7 @@
-import { expect } from 'chai';
+const { expect } = require('chai');
 
-import Publication from '~/models/Publication';
-import { signinWithLollipop } from './auth.test';
+const { Publication } = require('../../models');
+const { signinWithLollipop } = require('./auth.test');
 
 describe('Publication', () => {
   describe('GET,POST /publication', () => {

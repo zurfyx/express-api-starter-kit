@@ -2,7 +2,7 @@ sudo: false
 
 language: node_js
 node_js:
-  - 6.9.4 # LTS.
+  - 7.6
 
 services:
   - mongodb

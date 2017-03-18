@@ -1,15 +1,21 @@
-import { processGreeting } from '~/services/home';
+const { processGreeting } = require('../services').home;
 
-export function hello() {
+function hello() {
   return { msg: 'Hi!' };
 }
 
-export function getGreeting(name) {
+function getGreeting(name) {
   const greeting = processGreeting(name);
   return { msg: greeting };
 }
 
-export function postGreeting(name) {
+function postGreeting(name) {
   const greeting = processGreeting(name);
   return { msg: greeting };
 }
+
+module.exports = {
+  hello,
+  getGreeting,
+  postGreeting,
+};

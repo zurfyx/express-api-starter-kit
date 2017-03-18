@@ -1,11 +1,18 @@
-import { requireAuthentication } from '~/services/auth';
-import { findPublications, createPublication } from '~/services/publication';
+const { auth, publication } = require('../services');
 
-export function getPublications() {
+const { requireAuthentication } = auth;
+const { createPublication, findPublications } = publication;
+
+function getPublications() {
   return findPublications();
 }
 
-export function postPublication(user, content) {
+function postPublication(user, content) {
   requireAuthentication(user);
   return createPublication(user, content);
 }
+
+module.exports = {
+  getPublications,
+  postPublication,
+};

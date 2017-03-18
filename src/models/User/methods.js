@@ -1,11 +1,13 @@
-/* eslint-disable import/prefer-default-export */
+const bcrypt = require('bcrypt');
 
-import bcrypt from 'bcrypt';
-
-export function comparePassword(candidatePassword) {
+function comparePassword(candidatePassword) {
   return new Promise((resolve, reject) => {
     bcrypt.compare(candidatePassword, this.password, (error, isMatch) => (
       error ? reject(error) : resolve(isMatch)
     ));
   });
 }
+
+module.exports = {
+  comparePassword,
+};

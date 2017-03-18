@@ -1,13 +1,15 @@
-import express from 'express';
+const express = require('express');
 
-import * as log from '~/helpers/log';
-import { ServerError } from '~/helpers/server';
-
-import * as auth from '~/controllers/auth';
-import * as home from '~/controllers/home';
-import * as publication from '~/controllers/publication';
+const log = require('../helpers/log');
+const { ServerError } = require('../helpers/server');
+const controllers = require('../controllers');
 
 const router = express.Router();
+const {
+  auth,
+  home,
+  publication,
+} = controllers;
 
 /**
  * Handles controller execution and responds to user (API version).
@@ -65,4 +67,4 @@ router.use((err, req, res, _next) => {
   return res.status(500).json({ error: '⁽ƈ ͡ (ुŏ̥̥̥̥םŏ̥̥̥̥) ु' });
 });
 
-export default router;
+module.exports = router;

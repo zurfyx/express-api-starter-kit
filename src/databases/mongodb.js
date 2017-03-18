@@ -1,7 +1,7 @@
-import config from 'config';
-import mongoose from 'mongoose';
+const config = require('config');
+const mongoose = require('mongoose');
 
-import { dev, error } from '~/helpers/log';
+const log = require('../helpers/log');
 
 mongoose.Promise = Promise;
 
@@ -17,34 +17,34 @@ function connect() {
     .catch(() => {});
 }
 
-export default function initializeMongodb() {
+module.exports = () => {
   const db = mongoose.connection;
 
   db.on('connecting', () => {
-    dev('Connecting to MongoDB...');
+    log.dev('Connecting to MongoDB...');
   });
 
   db.on('error', (err) => {
-    error(`MongoDB connection error: ${err}`);
+    log.error(`MongoDB connection error: ${err}`);
     mongoose.disconnect();
   });
 
   db.on('connected', () => {
-    dev('Connected to MongoDB!');
+    log.dev('Connected to MongoDB!');
   });
 
   db.once('open', () => {
-    dev('MongoDB connection opened!');
+    log.dev('MongoDB connection opened!');
   });
 
   db.on('reconnected', () => {
-    dev('MongoDB reconnected!');
+    log.dev('MongoDB reconnected!');
   });
 
   db.on('disconnected', () => {
-    error(`MongoDB disconnected! Reconnecting in ${reconnectTimeout / 1000}s...`);
+    log.error(`MongoDB disconnected! Reconnecting in ${reconnectTimeout / 1000}s...`);
     setTimeout(() => connect(), reconnectTimeout);
   });
 
   connect();
-}
+};

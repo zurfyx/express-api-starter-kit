@@ -1,10 +1,12 @@
-/* eslint-disable import/prefer-default-export */
+const { ServerError } = require('../helpers/server');
 
-import { ServerError } from '~/helpers/server';
-
-export function requireAuthentication(user) {
+function requireAuthentication(user) {
   if (!user) {
     throw new ServerError('Authentication is required.', 403);
   }
   return user;
 }
+
+module.exports = {
+  requireAuthentication,
+};

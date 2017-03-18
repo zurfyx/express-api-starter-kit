@@ -1,9 +1,9 @@
-import config from 'config';
-import { createClient as createRedisClient } from 'redis';
-import connectRedis from 'connect-redis';
+const config = require('config');
+const { createClient } = require('redis');
+const connectRedis = require('connect-redis');
 
-export default function initializeRedis(Session) {
-  const redisClient = createRedisClient({
+module.exports = (Session) => {
+  const redisClient = createClient({
     host: config.get('database.session.host'),
     port: config.get('database.session.port'),
     prefix: config.get('database.session.prefix'),
@@ -11,4 +11,4 @@ export default function initializeRedis(Session) {
   });
   const RedisStore = connectRedis(Session);
   return new RedisStore({ client: redisClient });
-}
+};

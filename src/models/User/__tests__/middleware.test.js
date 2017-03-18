@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-expressions */
 
-import { expect } from 'chai';
-import sinon from 'sinon';
+const { expect } = require('chai');
+const sinon = require('sinon');
 
-import User from '../';
-import { hashPassword } from '../middleware';
+const User = require('../');
+const { hashPassword } = require('../middleware');
 
 describe('Model: User (middleware)', () => {
   it('should return a hashed password on password modification', (done) => {

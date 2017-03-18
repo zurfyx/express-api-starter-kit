@@ -1,19 +1,18 @@
-import passport from 'passport';
+const passport = require('passport');
 
-import '~/helpers/passport-strategies';
-import { ServerError } from '~/helpers/server';
+const { ServerError } = require('../helpers/server');
+require('../helpers/passport-strategies');
 
 /**
  * Sign in using email and password.
  * req, res, next params are all required this time (passport requires them). This is an exceptional
  * case.
  */
-export function signin(req, res, next) {
-  return new Promise((resolve, reject) => { // Passport uses callback, but controllerHandler uses
-                                            // Promise.
+function signin(req, res, next) {
+  return new Promise((resolve, reject) => {
     passport.authenticate('local-signin', (error, user, info) => {
       if (error) {
-        return reject(error);
+        return reject(error); // Passport uses callback, but controllerHandler uses Promise.
       }
       if (!user) {
         return reject(new ServerError(info, 400));
@@ -29,12 +28,11 @@ export function signin(req, res, next) {
   });
 }
 
-export function signup(req, res, next) {
-  return new Promise((resolve, reject) => { // Passport uses callback, but controllerHandler uses
-                                            // Promise.
+function signup(req, res, next) {
+  return new Promise((resolve, reject) => {
     passport.authenticate('local-signup', (error, user, info) => {
       if (error) {
-        return reject(error);
+        return reject(error); // Passport uses callback, but controllerHandler uses Promise.
       }
       if (!user) {
         return reject(new ServerError(info, 400));
@@ -44,3 +42,8 @@ export function signup(req, res, next) {
     })(req, res, next);
   });
 }
+
+module.exports = {
+  signin,
+  signup,
+};
